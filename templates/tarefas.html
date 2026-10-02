@@ -14,7 +14,15 @@
 
         <input type="text" name="Tarefa">
     <button type="submit">Adicionar</button>
+
 </form>
+
+<!-- loop de repetição -->
+<ul>
+{% for tarefa in tarefas %}
+    <li>{{ tarefa }}</li>
+{% endfor%}
+</ul>
 
 </body>
 </html>
