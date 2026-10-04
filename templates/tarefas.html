@@ -17,10 +17,10 @@
 
 </form>
 
-<!-- loop de repetição -->
+<!-- loop de repetição, mostra cada tarefa uma por uma -->
 <ul>
 {% for tarefa in tarefas %}
-    <li>{{ tarefa }}</li>
+    <li>{{ tarefa }} <a href="/remover/{{ loop.index0 }}">Remover</a></li>
 {% endfor%}
 </ul>
 
