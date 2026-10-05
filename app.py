@@ -1,4 +1,3 @@
-import bermuda
 from flask import Flask, render_template, request, redirect
 
 app = Flask (__name__)
@@ -16,7 +15,7 @@ def sobre():
 def lista_tarefa(): #só busca o dado do formulário quando ele foi enviado, evita erro quando a página só é aberta
     if request.method == 'POST':
         nome_tarefa = request.form['Tarefa']
-        tarefas.append(nome_tarefa)
+        tarefas.append({'nome': nome_tarefa, 'concluida': False})
         print(nome_tarefa)
     return render_template('tarefas.html', tarefas=tarefas)
 
@@ -24,6 +23,12 @@ def lista_tarefa(): #só busca o dado do formulário quando ele foi enviado, evi
 @app.route('/remover/<int:posicao>')
 def remover_tarefa(posicao):
     tarefas.pop(posicao)
+
+    return redirect('/tarefas')
+
+@app.route('/concluir/<int:posicao>')
+def concluir_tarefa(posicao):
+    tarefas[posicao]['concluida'] = True
 
     return redirect('/tarefas')
 

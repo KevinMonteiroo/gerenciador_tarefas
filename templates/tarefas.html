@@ -20,9 +20,16 @@
 <!-- loop de repetição, mostra cada tarefa uma por uma -->
 <ul>
 {% for tarefa in tarefas %}
-    <li>{{ tarefa }} <a href="/remover/{{ loop.index0 }}">Remover</a></li>
-{% endfor%}
-</ul>
+    <li>{{ tarefa ['nome'] }} <a href="/remover/{{ loop.index0 }}">Remover</a>
+        {% if not tarefa['concluida'] %}
+        <a href="/concluir/{{ loop.index0 }}">Concluir</a>
+        {% else %}
+            <button>Tarefa Concluída</button>
+        {% endif %}
+    </li>
 
+{% endfor%}
+
+</ul>
 </body>
 </html>
