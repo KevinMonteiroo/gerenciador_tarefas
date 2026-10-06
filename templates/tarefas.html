@@ -10,12 +10,18 @@
 <body>
 <h1>Minhas Tarefas</h1>
 
+
+
 <form method="POST">
 
         <input type="text" name="Tarefa">
     <button type="submit">Adicionar</button>
 
 </form>
+
+{% for mensagem in get_flashed_messages() %}
+    {{mensagem}}
+{% endfor %}
 
 <!-- loop de repetição, mostra cada tarefa uma por uma -->
 <ul>
